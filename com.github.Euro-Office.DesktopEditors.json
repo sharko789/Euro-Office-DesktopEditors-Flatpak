@@ -1,0 +1,65 @@
+{
+    "app-id": "com.github.Euro-Office.DesktopEditors",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.11",
+    "sdk": "org.kde.Sdk",
+    "sdk-version": "6.11",
+    "base": "io.qt.qtwebengine.BaseApp",
+    "base-version": "6.11",
+    "command": "eurooffice",
+    "separate-locales": false,
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--share=network",
+        "--filesystem=host",
+        "--filesystem=~/.local/share/gtk-3.0",
+        "--filesystem=/tmp",
+        "--filesystem=xdg-run/gvfs",
+        "--filesystem=xdg-run/gvfsd",
+        "--talk-name=org.gtk.vfs.*",
+        "--env=LC_ALL=C.UTF-8",
+        "--device=dri"
+    ],
+    "modules": [
+        {
+            "name": "eurooffice",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -d /app/opt/euro-office",
+                "mv opt/euro-office/euro-office /app/opt/euro-office/",
+                "cp /usr/bin/ar /app/bin",
+                "ARCH_TRIPLE=$(gcc --print-multiarch) && cp /usr/lib/${ARCH_TRIPLE}/libbfd-*.so /app/lib",
+                "install -Dm755 usr/bin/euro-office-euro-office /app/bin/eurooffice",
+                "sed -i 's|/opt/euro-office/euro-office|/app/opt/euro-office/euro-office|g' /app/bin/eurooffice",
+                "install -Dm644 usr/share/applications/euro-office-euro-office.desktop /app/share/applications/com.github.Euro-Office.DesktopEditors.desktop",
+                "sed -i -e 's|Exec=/usr/bin/euro-office-euro-office|Exec=eurooffice|g' -e 's|Icon=euro-office-euro-office|Icon=com.github.Euro-Office.DesktopEditors|' /app/share/applications/com.github.Euro-Office.DesktopEditors.desktop",
+                "for icon_size in 16 24 32 48 64 128 256; do install -Dm644 usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/euro-office-euro-office.png /app/share/icons/hicolor/${icon_size}x${icon_size}/apps/com.github.Euro-Office.DesktopEditors.png; done",
+                "install -Dm644 com.github.Euro-Office.DesktopEditors.metainfo.xml /app/share/metainfo/com.github.Euro-Office.DesktopEditors.metainfo.xml"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "only-arches": ["x86_64"],
+                    "url": "https://github.com/Euro-Office/DesktopEditors/releases/download/v9.3.5-2/euro-office-euro-office-9.3.5-2-x86_64.tar.xz",
+                    "sha256": "c846d3eca0ec94c9fd1ffe23b3f8d04f70eb158c7332cbfa426056eca932bc56",
+                    "strip-components": 0
+                },
+                {
+                    "type": "archive",
+                    "only-arches": ["aarch64"],
+                    "url": "https://github.com/Euro-Office/DesktopEditors/releases/download/v9.3.5-2/euro-office-euro-office-9.3.5-2-aarch64.tar.xz",
+                    "sha256": "eacb03148456b452447a7630ede9686b94591777c5571d088516990065c7fe6b",
+                    "strip-components": 0
+                },
+                {
+                    "type": "file",
+                    "url": "com.github.Euro-Office.DesktopEditors.metainfo.xml",
+                    "sha256": "01157f723af0523287691d802e72b662e9a1dd122907937d3227178590fcc3f2"
+                }
+            ]
+        }
+    ]
+}

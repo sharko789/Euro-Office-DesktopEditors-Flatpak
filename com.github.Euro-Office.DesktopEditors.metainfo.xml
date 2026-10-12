@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.Euro-Office.DesktopEditors</id>
+  <name>Euro-Office</name>
+  <developer id="com.github.Euro-Office"><name>Euro-Office</name></developer>
+  <summary>Office productivity suite</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>AGPL-3.0-only</project_license>
+  <url type="homepage">https://github.com/Euro-Office/DesktopEditors</url>
+  <url type="vcs-browser">https://github.com/Euro-Office/DesktopEditors</url>
+  <url type="bugtracker">https://github.com/Euro-Office/DesktopEditors/issues</url>
+  <!-- REPLACE with a stable, square app-icon URL (e.g. an icon committed to the
+       Euro-Office repo and referenced via raw.githubusercontent.com). The URL below
+       is a valid placeholder image already present in the repo. -->
+  <icon type="remote" height="256" width="256">https://raw.githubusercontent.com/Euro-Office/DesktopEditors/main/screenshots/ONLYOFFICE%20Desktop%20Editors.png</icon>
+  <description>
+    <p>Euro-Office is a free and open-source office suite comprising editors for text documents, spreadsheets, presentations, PDFs and PDF forms, along with a Diagram Viewer. It lets you create, view and edit office documents stored on your computer without an internet connection, and is fully compatible with Office Open XML formats: .docx, .xlsx, .pptx.</p>
+    <p>Thanks to the tab-based user interface, you can deal with multiple files within one and the same window. Plugins allow adding extra functionality. Password protection and digital signatures provide a higher level of security while working with files.</p>
+    <p>Along with offline work, it is possible to connect the application to the cloud for online document collaboration. Available options include Nextcloud, ownCloud, Seafile, Liferay and kDrive.</p>
+    <p>Euro-Office is a community fork of ONLYOFFICE Desktop Editors, licensed under the GNU AGPL v3.</p>
+  </description>
+  <launchable type="desktop-id">com.github.Euro-Office.DesktopEditors.desktop</launchable>
+  <kudos>
+    <kudo>HiDpiIcon</kudo>
+  </kudos>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="9.3.5" date="2026-10-09"/>
+  </releases>
+  <update_contact>euro-office (see GitHub)</update_contact>
+</component>
